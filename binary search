@@ -1,0 +1,43 @@
+int binary_search(int sz, int* parr, int a)
+{
+	int left = 0;
+	int right = sz - 1;
+	while (left<right)
+	{
+		int tmp = (left + right) / 2;
+		if (a > parr[tmp])
+		{
+			left = tmp;
+		}
+		else if (a == parr[tmp])
+		{
+			return tmp;
+			//找到了的话返回下标
+		}
+		else
+		{
+			right = tmp;
+		}
+	}
+	if (left > right)
+	{
+		return 0;
+		//返回0表示没找到
+	}
+}
+int main()
+{
+	int arr[] = { 1, 3, 4, 6, 9, 10, 13, 15, 17, 20 };
+	int a = 0;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	scanf("%d", &a);
+	int ret = binary_search(sz, arr, a);
+	if (0 == ret)
+	{
+		printf("没找到\n");
+	}
+	else
+	{
+		printf("找到了下标是：%d\n", ret);
+	}
+}
